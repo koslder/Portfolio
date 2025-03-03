@@ -44,3 +44,19 @@ $(document).ready(function () {
         return false;
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    const navLink = document.querySelectorAll('.menu nav ul li a')
+
+    hamburger.addEventListener('click', function () {
+        menu.classList.toggle('active');
+    });
+
+    navLink.forEach(link => {
+        link.addEventListener('click', function () {
+            menu.classList.remove('active');
+        })
+    });
+});
