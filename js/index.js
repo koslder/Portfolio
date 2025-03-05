@@ -1,24 +1,20 @@
 $(document).ready(function () {
-    // Handle click events on navigation links
     $('nav a').on('click', function (e) {
-        e.preventDefault(); // Prevent default anchor behavior
+        e.preventDefault();
 
-        var target = $(this).attr('href'); // Get the target section ID
+        var target = $(this).attr('href');
         if ($(target).length) {
-            // Hide all sections
+
             $('section').removeClass('section-show');
 
-            // Show the target section
             $(target).addClass('section-show');
 
-            // Smooth scroll to the target section
             $('html, body').animate({
                 scrollTop: $(target).offset().top
             }, 350);
         }
     });
 
-    // Show the default section on page load
     if (window.location.hash) {
         var initialSection = $(window.location.hash);
         if (initialSection.length) {
@@ -29,7 +25,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    // Show the button when the user scrolls down 100px from the top
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('#scrollToTop').fadeIn();
@@ -38,7 +33,6 @@ $(document).ready(function () {
         }
     });
 
-    // Scroll to the top when the button is clicked
     $('#scrollToTop').click(function () {
         $('html, body').animate({ scrollTop: 0 }, 800);
         return false;
@@ -58,5 +52,19 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function () {
             menu.classList.remove('active');
         })
+    });
+});
+
+$(document).ready(function () {
+    const hamburger = $('#hamburger');
+    const menu = $('#menu');
+    const navLinks = $('.menu nav ul li a');
+
+    hamburger.on('click', function () {
+        menu.toggleClass('active');
+    });
+
+    navLinks.on('click', function () {
+        menu.removeClass('active')
     });
 });
